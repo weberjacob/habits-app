@@ -36,7 +36,7 @@ class HabitCreator extends React.Component {
   render() {
     return (
       <div className="habit-creator">
-        <button onClick={this.showHabitCreation} >Add A Habit</button>
+        <button onClick={this.showHabitCreation} >Manage Your Habits</button>
         <section className={(this.state.isActive) ? 'open' : 'closed'}>
             <h2>What Habits Are You Tracking?</h2>
             <p className="lead">Manage the habits you are tracking here</p>

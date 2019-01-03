@@ -2,6 +2,9 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import '../css/DayLogger.scss';
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import fontawesome from '@fortawesome/fontawesome';
+// import { faChevronLeft, faChevronRight } from '@fortawesome/fontawesome-free-solid';
 
 class DayLogger extends React.Component {
   static propTypes = {
@@ -24,7 +27,7 @@ class DayLogger extends React.Component {
     this.setState({ logDate: newDate });
   }
 
-  renderDateSwitcher = () => {
+  dateSwitcher = () => {
     const minDate = moment().subtract(10, 'days');
     const maxDate = moment();
 
@@ -56,13 +59,14 @@ class DayLogger extends React.Component {
 
     return (
       <li key={index}>
-        <label>
+        <label className="checkBox">
           <input
             type="checkbox"
             checked={dayHistory[index] === true}
             name={habit}
             onChange={(event) => this.props.logHistory(this.state.logDate, index, event.target.checked)}
           />
+          <div className="box"></div>
           {habit}
         </label>
       </li>
@@ -75,8 +79,8 @@ class DayLogger extends React.Component {
       <section className="day-logger">
         <h2>How did the day go?</h2>
         <p>Track if you completed your goal for the day.</p>
-        <div className="logger-nav">
-          {this.renderDateSwitcher()}
+        <div className="date-switcher">
+          {this.dateSwitcher()}
         </div>
         <ul>
           {Object.keys(this.props.habits).map(this.renderDateHabits)}
