@@ -1,12 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import '../css/DayLogger.scss';
-// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import fontawesome from '@fortawesome/fontawesome';
-// import { faChevronLeft, faChevronRight } from '@fortawesome/fontawesome-free-solid';
+import '../css/DailyEntry.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/fontawesome-free-solid';
 
-class DayLogger extends React.Component {
+class DailyEntry extends React.Component {
   static propTypes = {
     habits: PropTypes.object,
     history: PropTypes.object,
@@ -34,19 +33,19 @@ class DayLogger extends React.Component {
     return (
       <React.Fragment>
         <button
-          className="date-shift"
+          className="icon"
           disabled={moment(this.state.logDate, 'MM-DD-YYYY').isSameOrBefore(minDate, 'day')}
           onClick={this.prevDate}
         >
-          {/* <FontAwesomeIcon icon={faChevronLeft} /> */}
+          <FontAwesomeIcon icon={faArrowCircleLeft} />
         </button>
         <h4>{this.state.logDate}</h4>
         <button
-          className="date-shift"
+          className="icon"
           disabled={moment(this.state.logDate, 'MM-DD-YYYY').isSameOrAfter(maxDate, 'day')}
           onClick={this.nextDate}
         >
-          {/* <FontAwesomeIcon icon={faChevronRight} /> */}
+          <FontAwesomeIcon icon={faArrowCircleRight} />
         </button>
       </React.Fragment>
     )
@@ -66,7 +65,7 @@ class DayLogger extends React.Component {
             name={habit}
             onChange={(event) => this.props.logHistory(this.state.logDate, index, event.target.checked)}
           />
-          <div className="box"></div>
+          {/* <div className="box"></div> */}
           {habit}
         </label>
       </li>
@@ -90,4 +89,4 @@ class DayLogger extends React.Component {
   }
 }
 
-export default DayLogger;
+export default DailyEntry;

@@ -12,6 +12,15 @@ nav {
     .logout {
       position: absolute;
       right: 1rem;
+      background-color: #af062a;
+
+      svg {
+        margin-left: 0.25rem;
+      }
+
+      &:hover {
+        background-color: darken(#af062a, 10%);
+      }
     }
   }
 
@@ -46,6 +55,24 @@ button,
     &:active,
     &:focus {
       color: #fff;
+    }
+
+    &.icon {
+      background: transparent;
+      box-shadow: none;
+      border: 0;
+      font-size: 1.5rem;
+
+      &:hover {
+        color: #af062a;
+      }
+
+      &.add {
+
+        &:hover {
+          color: #3b8be6;
+        }
+      }
     }
 
   }

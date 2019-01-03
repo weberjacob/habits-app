@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/HabitCreator.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinusCircle, faPlusCircle } from '@fortawesome/fontawesome-free-solid';
 
 class HabitCreator extends React.Component {
   static propTypes = {
@@ -40,12 +42,12 @@ class HabitCreator extends React.Component {
         <section className={(this.state.isActive) ? 'open' : 'closed'}>
             <h2>What Habits Are You Tracking?</h2>
             <p className="lead">Manage the habits you are tracking here</p>
-            <ul>
+            <ul className="current-habits">
               {Object.keys(this.props.habits).map(index => (
                 <li key={index}>
                   <fieldset>
                     <input onChange={(event) => this.handleChangeHabit(index, event)} value={this.props.habits[index]} />
-                    <button className="delete-btn" onClick={() => this.props.removeHabit(index)}>Remove Habit</button>
+                    <button className="remove icon" onClick={() => this.props.removeHabit(index)}><FontAwesomeIcon icon={faMinusCircle} /></button>
                   </fieldset>
                 </li>
               ))}
@@ -53,7 +55,7 @@ class HabitCreator extends React.Component {
               <li>
                 <form onSubmit={this.handleNewHabit}>
                   <input name="newHabit" ref={this.newHabitRef} />
-                  <button className="add-btn" type="submit">Add Habit</button>
+                <button className="add icon" type="submit"><FontAwesomeIcon icon={faPlusCircle} /></button>
                 </form>
               </li>
             </ul>

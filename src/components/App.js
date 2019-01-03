@@ -1,10 +1,12 @@
 import React from 'react';
 import firebase from 'firebase';
 import base, { firebaseApp } from "../base";
-import DayLogger from './DayLogger';
+import DailyEntry from './DailyEntry';
 import HabitCreator from './HabitCreator';
 import '../css/App.scss';
-// import HistoryTracker from './HistoryTracker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/fontawesome-free-solid';
+// import HabitHistory from './HabitHistory';
 
 class App extends React.Component {
   state = {
@@ -78,18 +80,17 @@ class App extends React.Component {
         <nav>
           <div>
             <h1>{this.state.displayName}'s Habits</h1>
-            <button className="logout" onClick={this.logOut}>Log Out</button>
+            <button className="logout" onClick={this.logOut}>Log Out <FontAwesomeIcon icon={faTimesCircle} /></button>
           </div>
         </nav>
         <main className='container'>
-          <DayLogger
+          <DailyEntry
             habits={this.state.habits}
             history={this.state.history}
             logHistory={this.logHistory}
           />
 
-
-          {/* <HistoryTracker
+          {/* <HabitHistory
             habits={this.state.habits}
             history={this.state.history}
           /> */}

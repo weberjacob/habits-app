@@ -19,5 +19,11 @@
 
   ul {
     list-style: none;
+
+    fieldset {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
   }
 }

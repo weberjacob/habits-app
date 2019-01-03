@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 import './css/index.scss';
-import App from './components/App';
+// import App from './components/App';
 import Router from './components/Router';
 // import * as serviceWorker from './serviceWorker';
 
