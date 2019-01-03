@@ -14,6 +14,5 @@ const base = Rebase.createClass(firebaseApp.database());
 
 // named export
 export { firebaseApp };
-
 // default export
 export default base;
