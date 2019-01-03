@@ -9,7 +9,7 @@ Simple habit tracking app.
 ### Login With:
 Google, Github or Twitter.
 
-#### More coming soon:
+#### More coming soon: (TODO)
 * History view
 * Better navigation
 * Updated styling
