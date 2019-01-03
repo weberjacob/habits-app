@@ -1,9 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-// import fontawesome from '@fortawesome/fontawesome';
-// import { faChevronLeft, faChevronRight } from '@fortawesome/fontawesome-free-solid';
+import '../css/DayLogger.scss';
 
 class DayLogger extends React.Component {
   static propTypes = {
@@ -16,9 +14,6 @@ class DayLogger extends React.Component {
     logDate: moment().format('MM-DD-YYYY')
   }
 
-	/**********************************************************
-	Update Which Date is Being Logged
-	*/
   prevDate = () => {
     const newDate = moment.max(moment(this.state.logDate, 'MM-DD-YYYY').subtract(1, 'days'), moment(this.state.logDate, 'MM-DD-YYYY').subtract(3, 'days')).format('MM-DD-YYYY');
     this.setState({ logDate: newDate });
@@ -29,13 +24,8 @@ class DayLogger extends React.Component {
     this.setState({ logDate: newDate });
   }
 
-
-	/**********************************************************
-	Render Buttons to Log 3 Days Back to Today
-	*/
-
   renderDateSwitcher = () => {
-    const minDate = moment().subtract(3, 'days');
+    const minDate = moment().subtract(10, 'days');
     const maxDate = moment();
 
     return (
@@ -59,23 +49,19 @@ class DayLogger extends React.Component {
     )
   }
 
-
-	/**********************************************************
-	Render List of Habits for a Day
-	*/
-
-  renderDateHabits = (indx) => {
+  // Show a list of the habits for each day
+  renderDateHabits = (index) => {
     const dayHistory = this.props.history[this.state.logDate] || {};
-    const habit = this.props.habits[indx];
+    const habit = this.props.habits[index];
 
     return (
-      <li key={indx}>
+      <li key={index}>
         <label>
           <input
             type="checkbox"
-            checked={dayHistory[indx] === true}
+            checked={dayHistory[index] === true}
             name={habit}
-            onChange={(event) => this.props.logHistory(this.state.logDate, indx, event.target.checked)}
+            onChange={(event) => this.props.logHistory(this.state.logDate, index, event.target.checked)}
           />
           {habit}
         </label>
@@ -84,15 +70,11 @@ class DayLogger extends React.Component {
 
   }
 
-	/**********************************************************
-	Render
-	*/
-
   render() {
     return (
-      <section className="container logger card">
-        <h2>Did You Do It?</h2>
-        <p className="lead">Quick-track if you built your habit each day</p>
+      <section className="day-logger">
+        <h2>How did the day go?</h2>
+        <p>Track if you completed your goal for the day.</p>
         <div className="logger-nav">
           {this.renderDateSwitcher()}
         </div>

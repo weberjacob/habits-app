@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/HabitCreator.scss';
 
 class HabitCreator extends React.Component {
   static propTypes = {
@@ -7,6 +8,10 @@ class HabitCreator extends React.Component {
     changeHabit: PropTypes.func.isRequired,
     removeHabit: PropTypes.func.isRequired
   };
+
+  state = {
+    isActive: false
+  }
 
   newHabitRef = React.createRef();
   handleNewHabit = (event) => {
@@ -24,29 +29,36 @@ class HabitCreator extends React.Component {
     this.props.changeHabit(key, changedHabit);
   }
 
+  showHabitCreation = () => {
+    this.setState({ isActive: !this.state.isActive })
+  }
+
   render() {
     return (
-      <section className="container creator card">
-        <h2>What Habits Are You Tracking?</h2>
-        <p className="lead">Manage the habits you are tracking here</p>
-        <ul>
-          {Object.keys(this.props.habits).map(index => (
-            <li key={index}>
-              <fieldset>
-                <input onChange={(event) => this.handleChangeHabit(index, event)} value={this.props.habits[index]} />
-                <button className="delete-btn" onClick={() => this.props.removeHabit(index)}>asdfsdf</button>
-              </fieldset>
-            </li>
-          ))}
+      <div className="habit-creator">
+        <button onClick={this.showHabitCreation} >Add A Habit</button>
+        <section className={(this.state.isActive) ? 'open' : 'closed'}>
+            <h2>What Habits Are You Tracking?</h2>
+            <p className="lead">Manage the habits you are tracking here</p>
+            <ul>
+              {Object.keys(this.props.habits).map(index => (
+                <li key={index}>
+                  <fieldset>
+                    <input onChange={(event) => this.handleChangeHabit(index, event)} value={this.props.habits[index]} />
+                    <button className="delete-btn" onClick={() => this.props.removeHabit(index)}>Remove Habit</button>
+                  </fieldset>
+                </li>
+              ))}
 
-          <li>
-            <form onSubmit={this.handleNewHabit}>
-              <input name="newHabit" ref={this.newHabitRef} />
-              <button className="add-btn" type="submit">asdf</button>
-            </form>
-          </li>
-        </ul>
-      </section>
+              <li>
+                <form onSubmit={this.handleNewHabit}>
+                  <input name="newHabit" ref={this.newHabitRef} />
+                  <button className="add-btn" type="submit">Add Habit</button>
+                </form>
+              </li>
+            </ul>
+        </section>
+      </div>
     )
   }
 }

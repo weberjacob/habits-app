@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import base, { firebaseApp } from "../base";
 import DayLogger from './DayLogger';
 import HabitCreator from './HabitCreator';
+import '../css/App.scss';
 // import HistoryTracker from './HistoryTracker';
 
 class App extends React.Component {
@@ -13,10 +14,6 @@ class App extends React.Component {
     history: {}
   };
 
-  /**********************************************************
-  Save / sync with firebase
-  Log user in and out with firebase
-  */
   componentDidMount() {
     // const user = localStorage.getItem('user');
     this.authListener = firebase.auth().onAuthStateChanged(userData => {
@@ -52,20 +49,10 @@ class App extends React.Component {
     if (this.histRef) { base.removeBinding(this.histRef) }
   }
 
-  /**********************************************************
-  Store user in session storage
-  */
-
   logOut = () => {
     firebase.auth().signOut();
   }
 
-  /**********************************************************
-  Updating Items:
-  copy state
-  update copy
-  push copy to state
-  */
   changeHabit = (key, newVal) => {
     const updatedHabits = { ...this.state.habits };
     updatedHabits[key] = newVal;
@@ -74,7 +61,7 @@ class App extends React.Component {
 
   removeHabit = (key) => {
     const updatedHabits = { ...this.state.habits };
-    updatedHabits[key] = null; // set to null instead of delete due to firebase
+    updatedHabits[key] = null; // set to null instead of delete - firebase bug?
     this.setState({ habits: updatedHabits });
   }
 
@@ -89,9 +76,9 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <nav>
-          <div className='container flexer justspacebetween'>
+          <div>
             <h1>{this.state.displayName}'s Habits</h1>
-            <button className="sk" onClick={this.logOut}>Log Out</button>
+            <button className="logout" onClick={this.logOut}>Log Out</button>
           </div>
         </nav>
         <main className='container'>
@@ -106,7 +93,7 @@ class App extends React.Component {
             habits={this.state.habits}
             history={this.state.history}
           /> */}
-          <HabitCreator
+          <HabitCreator 
             habits={this.state.habits}
             changeHabit={this.changeHabit}
             removeHabit={this.removeHabit}

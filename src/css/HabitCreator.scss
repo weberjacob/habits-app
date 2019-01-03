@@ -1,0 +1,23 @@
+
+.habit-creator {
+
+  > section {
+    transition: visibility 400ms ease, opacity 400ms ease, height 400ms ease;
+
+    &.closed {
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+    }
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+}

@@ -1,1 +1,58 @@
 
+nav {
+  border-bottom: 2px solid #eee;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .logout {
+      position: absolute;
+      right: 1rem;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
+
+button,
+.button {
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0.5rem;
+    white-space: normal;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-shadow: none;
+    padding: (0.75rem) (1.5rem);
+    border: 2px solid #333;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    color: #fff;
+    background-color: #0988;
+    transition: background 400ms ease, color 400ms ease, border 400ms ease, box-shadow 400ms ease;
+
+    &:visited,
+    &:active,
+    &:focus {
+      color: #fff;
+    }
+
+  }
+
+  main.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
+  }

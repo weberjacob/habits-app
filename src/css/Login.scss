@@ -4,35 +4,15 @@
   justify-content: center;
   align-items: center;
 
+  nav {
+    border-bottom: 0;
+  }
+
    p {
     text-align: center;
   }
 
   button {
-    cursor: pointer;
-    display: block;
-    vertical-align: middle;
-    margin: 1rem auto;
-    white-space: normal;
-    text-transform: capitalize;
-    font-weight: bold;
-    text-shadow: none;
-    padding: (0.75rem) (1.5rem);
-    background-size: 100% 200%;
-    border: 2px solid #333;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    font-size: 12px;
-    line-height: 1;
-    text-align: center;
-    color: #fff;
-    transition: background 400ms ease, color 400ms ease, border 400ms ease, box-shadow 400ms ease;
-
-    &:visited,
-    &:active,
-    &:focus {
-      color: #fff;
-    }
 
     &.google {
       background-color: #db3236;
