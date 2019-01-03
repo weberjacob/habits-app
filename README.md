@@ -10,7 +10,7 @@ Simple habit tracking app.
 Google, Github or Twitter.
 
 #### More coming soon:
-• History view.
-• Better navigation
-• Updated styling
-• Theme options
+* History view
+* Better navigation
+* Updated styling
+* Theme options
