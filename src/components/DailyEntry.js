@@ -65,7 +65,7 @@ class DailyEntry extends React.Component {
             name={habit}
             onChange={(event) => this.props.logHistory(this.state.logDate, index, event.target.checked)}
           />
-          {/* <div className="box"></div> */}
+          <div className="box"></div>
           {habit}
         </label>
       </li>

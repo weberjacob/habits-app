@@ -57,6 +57,10 @@ button,
       color: #fff;
     }
 
+    &:hover {
+      background-color: darken(#0988, 10%);
+    }
+
     &.icon {
       background: transparent;
       box-shadow: none;
