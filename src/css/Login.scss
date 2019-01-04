@@ -4,11 +4,15 @@
   justify-content: center;
   align-items: center;
 
+  h1 {
+    text-align: center;
+  }
+
   nav {
     border-bottom: 0;
   }
 
-   p {
+  p {
     text-align: center;
   }
 
@@ -36,6 +40,10 @@
       &:hover {
         background-color: darken(#333, 10%);
       }
+    }
+
+    > svg {
+      margin-left: 0.25rem;
     }
   }
 }
