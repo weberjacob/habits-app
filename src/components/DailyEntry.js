@@ -29,7 +29,8 @@ class DailyEntry extends React.Component {
   }
 
   dateSwitcher = () => {
-    const minDate = moment().subtract(10, 'days');
+    // const minDate = moment().subtract(10, 'days');
+    const minDate = moment().startOf('year');
     const maxDate = moment();
 
     return (
