@@ -1,0 +1,78 @@
+
+$c-grey-l: #BDBDBD;
+$c-grey-m: #9E9E9E;
+$c-grey-d: #616161;
+$c-black-not: #212121;
+$c-black-pure: #000000;
+$c-white-not: #F5F5F5;
+$c-white-pure: #FFFFFF;
+$c-blue: #04befe;
+$c-pink: #ff7eb3;
+$c-orange: #fda085;
+$c-aqua: #84fab0;
+
+@mixin makeColors($colorName, $colorValue){
+	@for $i from 0 through 5{
+		div.c-#{$colorName}-#{$i} {
+			background: darken( $colorValue, $i * 10 );
+			width: 25px;
+			height: 25px;
+
+			margin: .15em;
+			padding: .25em;
+
+			text-align: center;
+			color: $c-white-pure;
+			font-weight: bold;
+
+			display: inline-block;
+		}
+	}
+}
+
+.history{
+    @include makeColors(blue, $c-blue);
+    @include makeColors(pink, $c-pink);
+    @include makeColors(orange, $c-orange);
+    @include makeColors(aqua, $c-aqua);
+}
+
+@mixin makeSwitchButton($colorName, $colorValue){
+	button.color-switch-#{$colorName} {
+		background: $colorValue;
+		width: 40px;
+		height: 40px;
+		border-radius: 100% 100% 0 100%;
+
+		margin: .1em;
+		border: 0;
+		display: inline-block;
+	}
+}
+
+.history{
+    @include makeSwitchButton(blue, $c-blue);
+    @include makeSwitchButton(pink, $c-pink);
+    @include makeSwitchButton(orange, $c-orange);
+    @include makeSwitchButton(aqua, $c-aqua);
+}
+
+// layout only 
+.history-grid-wrapper{
+	width: 90%;
+	margin-bottom: 2em;
+
+	.history-grid{
+		width: 300px;
+	}
+
+	.history-legend > div{
+		margin-bottom: 1em;
+	}
+
+	.history-legend{
+		.c-chip{
+			border-radius: 100%;
+		}
+	}
+}

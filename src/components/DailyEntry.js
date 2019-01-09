@@ -9,11 +9,13 @@ class DailyEntry extends React.Component {
   static propTypes = {
     habits: PropTypes.object,
     history: PropTypes.object,
+    totals: PropTypes.object,
     logHistory: PropTypes.func.isRequired
   };
 
   state = {
-    logDate: moment().format('MM-DD-YYYY')
+    logDate: moment().format('MM-DD-YYYY'),
+    totals: 0
   }
 
   prevDate = () => {
@@ -34,18 +36,18 @@ class DailyEntry extends React.Component {
       <React.Fragment>
         <button
           className="icon"
-          disabled={moment(this.state.logDate, 'MM-DD-YYYY').isSameOrBefore(minDate, 'day')}
-          onClick={this.prevDate}
+          disabled={ moment(this.state.logDate, 'MM-DD-YYYY').isSameOrBefore(minDate, 'day') }
+          onClick={ this.prevDate }
         >
-          <FontAwesomeIcon icon={faArrowCircleLeft} />
+          <FontAwesomeIcon icon={ faArrowCircleLeft } />
         </button>
         <h4>{this.state.logDate}</h4>
         <button
           className="icon"
-          disabled={moment(this.state.logDate, 'MM-DD-YYYY').isSameOrAfter(maxDate, 'day')}
-          onClick={this.nextDate}
+          disabled={ moment(this.state.logDate, 'MM-DD-YYYY').isSameOrAfter(maxDate, 'day') }
+          onClick={ this.nextDate }
         >
-          <FontAwesomeIcon icon={faArrowCircleRight} />
+          <FontAwesomeIcon icon={ faArrowCircleRight } />
         </button>
       </React.Fragment>
     )
@@ -61,12 +63,14 @@ class DailyEntry extends React.Component {
         <label className="checkBox">
           <input
             type="checkbox"
-            checked={dayHistory[index] === true}
-            name={habit}
-            onChange={(event) => this.props.logHistory(this.state.logDate, index, event.target.checked)}
+            checked={ dayHistory[index] === true }
+            name={ habit }
+            onChange={(event) => {
+              this.props.logHistory(this.state.logDate, index, event.target.checked)
+              }}
           />
           <div className="box"></div>
-          {habit}
+          { habit }
         </label>
       </li>
     )
@@ -79,10 +83,10 @@ class DailyEntry extends React.Component {
         <h2>How did the day go?</h2>
         <p>Track if you completed your goal for the day.</p>
         <div className="date-switcher">
-          {this.dateSwitcher()}
+          { this.dateSwitcher() }
         </div>
         <ul>
-          {Object.keys(this.props.habits).map(this.renderDateHabits)}
+          { Object.keys(this.props.habits).map(this.renderDateHabits) }
         </ul>
       </section>
     )

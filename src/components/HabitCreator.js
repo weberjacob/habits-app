@@ -47,15 +47,19 @@ class HabitCreator extends React.Component {
                 <li key={index}>
                   <fieldset>
                     <input onChange={(event) => this.handleChangeHabit(index, event)} value={this.props.habits[index]} />
-                    <button className="remove icon" onClick={() => this.props.removeHabit(index)}><FontAwesomeIcon icon={faMinusCircle} /></button>
+                    <button className="remove icon" onClick={() => this.props.removeHabit(index)}>
+                      <FontAwesomeIcon icon={ faMinusCircle } />
+                    </button>
                   </fieldset>
                 </li>
               ))}
 
               <li>
                 <form onSubmit={this.handleNewHabit}>
-                  <input name="newHabit" ref={this.newHabitRef} />
-                <button className="add icon" type="submit"><FontAwesomeIcon icon={faPlusCircle} /></button>
+                  <input name="newHabit" ref={ this.newHabitRef } />
+                <button className="add icon" type="submit">
+                  <FontAwesomeIcon icon={ faPlusCircle } />
+                </button>
                 </form>
               </li>
             </ul>

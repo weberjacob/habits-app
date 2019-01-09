@@ -6,14 +6,15 @@ import HabitCreator from './HabitCreator';
 import '../css/App.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/fontawesome-free-solid';
-// import HabitHistory from './HabitHistory';
+import HabitHistory from './HabitHistory';
 
 class App extends React.Component {
   state = {
     user: '',
     displayName: '',
     habits: {},
-    history: {}
+    history: {},
+    totals: 0
   };
 
   componentDidMount() {
@@ -43,12 +44,18 @@ class App extends React.Component {
       context: this,
       state: 'history'
     });
+
+    this.totalsRef = base.syncState(`${this.state.user}/totals`, {
+      context: this,
+      state: 'totals'
+    });
   }
 
   componentWillUnmount() {
     if (this.authListener) { this.authListener = undefined }
     if (this.habitRef) { base.removeBinding(this.habitRef) }
     if (this.histRef) { base.removeBinding(this.histRef) }
+    if (this.totalsRef) { base.removeBinding(this.totalsRef) }
   }
 
   logOut = () => {
@@ -72,6 +79,12 @@ class App extends React.Component {
     updatedHistory[date] = updatedHistory[date] || {};
     updatedHistory[date][habitKey] = didDoIt || false;
     this.setState({ history: updatedHistory });
+    // Update totals within state to track over time.
+    if ( updatedHistory[date][habitKey] === true ) {
+      this.setState({ totals: this.state.totals + 1 });
+    } else {
+      this.setState({ totals: this.state.totals - 1 });
+    }
   }
 
   render() {
@@ -80,24 +93,27 @@ class App extends React.Component {
         <nav>
           <div>
             <h1>{this.state.displayName}'s Habits</h1>
-            <button className="logout" onClick={this.logOut}>Log Out <FontAwesomeIcon icon={faTimesCircle} /></button>
+            <button className="logout" onClick={this.logOut}>
+              Log Out <FontAwesomeIcon icon={ faTimesCircle } />
+            </button>
           </div>
         </nav>
         <main className='container'>
           <DailyEntry
-            habits={this.state.habits}
-            history={this.state.history}
-            logHistory={this.logHistory}
+            habits={ this.state.habits }
+            history={ this.state.history }
+            logHistory={ this.logHistory }
           />
 
-          {/* <HabitHistory
-            habits={this.state.habits}
-            history={this.state.history}
-          /> */}
+          <HabitHistory
+            // habits={ this.state.habits }
+            // history={ this.state.history }
+            totals={ this.state.totals }
+          />
           <HabitCreator 
-            habits={this.state.habits}
-            changeHabit={this.changeHabit}
-            removeHabit={this.removeHabit}
+            habits={ this.state.habits }
+            changeHabit={ this.changeHabit }
+            removeHabit={ this.removeHabit }
           />
         </main>
       </React.Fragment>
