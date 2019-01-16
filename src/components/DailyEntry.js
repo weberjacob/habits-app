@@ -9,7 +9,7 @@ class DailyEntry extends React.Component {
   static propTypes = {
     habits: PropTypes.object,
     history: PropTypes.object,
-    totals: PropTypes.object,
+    totals: PropTypes.number,
     logHistory: PropTypes.func.isRequired
   };
 

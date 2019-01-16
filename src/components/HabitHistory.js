@@ -8,10 +8,10 @@ class HabitHistory extends React.Component {
     totals: PropTypes.number
   };
 
-  renderTotal = () => {
+  renderYearTotal = () => {
     return (
-      <div className="total">
-        Total = <span className="total-complete">{ this.props.totals }</span>
+      <div className="year-total">
+        Habits Tracked This Year = <span className="total-complete">{ this.props.totals }</span>
       </div>
     )
   }
@@ -23,7 +23,7 @@ class HabitHistory extends React.Component {
         <p className="lead">How many days have you tracked this year?</p>
         <div className='history-grid-wrapper'>
           <div className='history-grid'>
-            { this.renderTotal() }
+            { this.renderYearTotal() }
           </div>
         </div>
       </section>
