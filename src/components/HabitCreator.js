@@ -11,10 +11,6 @@ class HabitCreator extends React.Component {
     removeHabit: PropTypes.func.isRequired
   };
 
-  state = {
-    isActive: false
-  }
-
   newHabitRef = React.createRef();
   handleNewHabit = (event) => {
     event.preventDefault();
@@ -31,15 +27,10 @@ class HabitCreator extends React.Component {
     this.props.changeHabit(key, changedHabit);
   }
 
-  toggleActiveState = () => {
-    this.setState({ isActive: !this.state.isActive })
-  }
-
   render() {
     return (
       <div className="habit-creator">
-        <button onClick={this.toggleActiveState} >Manage Your Habits</button>
-        <section className={(this.state.isActive) ? 'open' : 'closed'}>
+        <section>
             <h2>What Habits Are You Tracking?</h2>
             <p className="lead">Manage the habits you are tracking here</p>
             <ul className="current-habits">

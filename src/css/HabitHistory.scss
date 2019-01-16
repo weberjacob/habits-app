@@ -1,20 +1,20 @@
 
-.history-tracker {
-	margin: 2rem auto;
+// .history-tracker {
+// 	margin: 2rem auto;
 
-  > section {
-    transition: visibility 400ms ease, opacity 400ms ease, height 400ms ease, margin 400ms ease;
+//   > section {
+//     transition: visibility 400ms ease, opacity 400ms ease, height 400ms ease, margin 400ms ease;
 
-    &.closed {
-      visibility: hidden;
-      opacity: 0;
-      height: 0;
-    }
+//     &.closed {
+//       visibility: hidden;
+//       opacity: 0;
+//       height: 0;
+//     }
 
-    &.open {
-      visibility: visible;
-      opacity: 1;
-			height: auto;
-    }
-  }
-}
+//     &.open {
+//       visibility: visible;
+//       opacity: 1;
+// 			height: auto;
+//     }
+//   }
+// }

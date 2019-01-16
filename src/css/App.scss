@@ -32,66 +32,75 @@ nav {
 
 button,
 .button {
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0.5rem;
-    white-space: normal;
-    text-transform: capitalize;
-    font-weight: bold;
-    text-shadow: none;
-    padding: (0.75rem) (1.5rem);
-    border: 2px solid #333;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    font-size: 12px;
-    line-height: 1;
-    text-align: center;
-    color: #fff;
-    background-color: #0988;
-    transition: background 400ms ease, color 400ms ease, border 400ms ease, box-shadow 400ms ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0.5rem;
+  white-space: normal;
+  text-transform: capitalize;
+  font-weight: bold;
+  text-shadow: none;
+  padding: (0.75rem) (1.5rem);
+  border: 2px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  color: #fff;
+  background-color: #0988;
+  transition: background 400ms ease, color 400ms ease, border 400ms ease, box-shadow 400ms ease;
 
-    &:visited,
-    &:active,
-    &:focus {
-      color: #fff;
-    }
+  &:visited,
+  &:active,
+  &:focus {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: darken(#0988, 10%);
+  }
+
+  &.icon {
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    font-size: 1.5rem;
 
     &:hover {
-      background-color: darken(#0988, 10%);
+      color: #af062a;
     }
 
-    &.icon {
-      background: transparent;
-      box-shadow: none;
-      border: 0;
-      font-size: 1.5rem;
+    &.add {
 
       &:hover {
-        color: #af062a;
-      }
-
-      &.add {
-
-        &:hover {
-          color: #3b8be6;
-        }
+        color: #3b8be6;
       }
     }
-
   }
 
-  main.container {
-    max-width: 500px;
-    margin: auto;
-    padding: 1rem;
-    text-align: center;
+}
+
+main.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+section {
+  transition: visibility 400ms ease, opacity 400ms ease, height 400ms ease;
+
+  &.closed {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
   }
 
-  // .toggles {
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+  }
+}

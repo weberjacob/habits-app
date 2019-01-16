@@ -14,7 +14,8 @@ class App extends React.Component {
     displayName: '',
     habits: {},
     history: {},
-    totals: 0
+    totals: 0,
+    isActive: false
   };
 
   componentDidMount() {
@@ -87,6 +88,14 @@ class App extends React.Component {
     }
   }
 
+  toggleHistoryActiveState = () => {
+    this.setState({ historyIsActive: !this.state.historyIsActive })
+  }
+
+  toggleHabitsActiveState = () => {
+    this.setState({ habitsIsActive: !this.state.habitsIsActive })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -106,16 +115,26 @@ class App extends React.Component {
           />
 
           <div className="toggles">
-            <HabitHistory
-              // habits={ this.state.habits }
-              // history={ this.state.history }
-              totals={this.state.totals}
-            />
-            <HabitCreator
-              habits={this.state.habits}
-              changeHabit={this.changeHabit}
-              removeHabit={this.removeHabit}
-            />
+
+            <button onClick={this.toggleHistoryActiveState} >View Your History</button>
+            <button onClick={this.toggleHabitsActiveState} >Manage Your Habits</button>
+
+            <section className={(this.state.historyIsActive) ? 'open' : 'closed'}>
+              <HabitHistory
+                // habits={ this.state.habits }
+                // history={ this.state.history }
+                totals={this.state.totals}
+              />
+            </section>
+
+            <section className={(this.state.habitsIsActive) ? 'open' : 'closed'}>
+              <HabitCreator
+                habits={this.state.habits}
+                changeHabit={this.changeHabit}
+                removeHabit={this.removeHabit}
+              />
+              
+            </section>
           </div>
         </main>
       </React.Fragment>

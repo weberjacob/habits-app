@@ -9,14 +9,6 @@ class HabitHistory extends React.Component {
     totals: PropTypes.number
   };
 
-  state = {
-    isActive: false
-  }
-
-  toggleActiveState = () => {
-    this.setState({ isActive: !this.state.isActive })
-  }
-
   renderYearTotal = () => {
     // Take total entered and divide by the current day of the year.
     let yearTotal = this.props.totals;
@@ -31,9 +23,8 @@ class HabitHistory extends React.Component {
   render() {
     return (
       <div className='history-tracker'>
-        <button onClick={this.toggleActiveState} >View Your History</button>
 
-        <section className={(this.state.isActive) ? 'open' : 'closed'}>
+        <section>
           <h2>How have you been doing?</h2>
           <p className=''>How many days have you tracked this year?</p>
           <div className='history-totals'>
