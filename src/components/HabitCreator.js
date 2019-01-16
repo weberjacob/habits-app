@@ -31,14 +31,14 @@ class HabitCreator extends React.Component {
     this.props.changeHabit(key, changedHabit);
   }
 
-  showHabitCreation = () => {
+  toggleActiveState = () => {
     this.setState({ isActive: !this.state.isActive })
   }
 
   render() {
     return (
       <div className="habit-creator">
-        <button onClick={this.showHabitCreation} >Manage Your Habits</button>
+        <button onClick={this.toggleActiveState} >Manage Your Habits</button>
         <section className={(this.state.isActive) ? 'open' : 'closed'}>
             <h2>What Habits Are You Tracking?</h2>
             <p className="lead">Manage the habits you are tracking here</p>

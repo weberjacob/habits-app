@@ -88,3 +88,10 @@ button,
     padding: 1rem;
     text-align: center;
   }
+
+  .toggles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }

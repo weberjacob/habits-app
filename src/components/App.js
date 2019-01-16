@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import base, { firebaseApp } from "../base";
+import base from "../base"; // , { firebaseApp } 
 import DailyEntry from './DailyEntry';
 import HabitCreator from './HabitCreator';
 import '../css/App.scss';
@@ -105,16 +105,18 @@ class App extends React.Component {
             logHistory={ this.logHistory }
           />
 
-          <HabitHistory
-            // habits={ this.state.habits }
-            // history={ this.state.history }
-            totals={ this.state.totals }
-          />
-          <HabitCreator 
-            habits={ this.state.habits }
-            changeHabit={ this.changeHabit }
-            removeHabit={ this.removeHabit }
-          />
+          <div className="toggles">
+            <HabitHistory
+              // habits={ this.state.habits }
+              // history={ this.state.history }
+              totals={this.state.totals}
+            />
+            <HabitCreator
+              habits={this.state.habits}
+              changeHabit={this.changeHabit}
+              removeHabit={this.removeHabit}
+            />
+          </div>
         </main>
       </React.Fragment>
     )
